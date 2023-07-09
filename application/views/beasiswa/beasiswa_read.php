@@ -4,6 +4,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
                     <h2 class="pageheader-title">Data Beasiswa </h2>
+                    <?php if ($this->session->userdata('peran') != 'USER') : ?>
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -13,6 +14,7 @@
                             </ol>
                         </nav>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -24,8 +26,10 @@
                 <div class="card">
                     <div class="card-header">
                         Data Beasiswa
+                        <?php if ($this->session->userdata('peran') != 'USER') : ?>
                         <a href="<?= base_url('beasiswa/tambah') ?>" class="btn btn-sm btn-success float-right"><i class="fas fa-plus">Tambah Data</i></a>
                         <a href="<?= base_url('beasiswa/cetak') ?>" class="btn btn-sm btn-info mr-1 float-right"><i class="fas fa-print">Cetak Data</i></a>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered" id="mytabel">
@@ -37,7 +41,9 @@
                                     <th>Tanggal Selesai</th>
                                     <th>Nama Jenis Beasiswa</th>
                                     <th>Keterangan</th>
+                                    <?php if ($this->session->userdata('peran') != 'USER') : ?>
                                     <th>Aksi</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,8 +58,10 @@
                                         <td><?= $a->nama_jenis ?></td>
                                         <td><?= $a->keterangan ?></td>
                                         <td>
+                                             <?php if ($this->session->userdata('peran') != 'USER') : ?>
                                             <a href="<?= base_url('beasiswa/ubah/' . $a->id) ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> Ubah</a>
                                             <a href="<?= base_url('beasiswa/hapus/' . $a->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Ingin hapus data ini?')"><i class="fas fa-trash"></i> Hapus</a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php

@@ -22,6 +22,7 @@
                                         <li class="nav-item">
                                             <a href="<?php echo base_url('beasiswa') ?>" class="nav-link">Beasiswa</a>
                                         </li>
+                                        <?php if ($this->session->userdata('peran') != 'USER') : ?>
                                         <li class="nav-item">
                                              <a href="<?php echo base_url('jenis') ?>" class="nav-link">Jenis Beasiswa</a>
                                         </li>
@@ -35,9 +36,12 @@
                                          <li class="nav-item">
                                              <a href="<?php echo base_url('pendaftaran') ?>" class="nav-link">Pendaftaran Akun</a>
                                         </li>
+                                        <?php endif; ?>
+                                        <?php if ($this->session->userdata('peran') != 'ADMIN') : ?>
                                          <li class="nav-item">
                                              <a href="<?php echo base_url('pengguna') ?>" class="nav-link">pengguna</a>
                                         </li>
+                                        <?php endif; ?>
                                         
                                     </ul>
                                 </div>
